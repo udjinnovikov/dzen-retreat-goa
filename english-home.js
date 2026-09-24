@@ -20,7 +20,13 @@ window.addEventListener('DOMContentLoaded', function () {
   var mobileNav = document.querySelector('.mobile-nav');
   if (desktopNav) desktopNav.setAttribute('aria-label', 'Main navigation');
   if (mobileNav) mobileNav.setAttribute('aria-label', 'Full navigation');
-  document.querySelectorAll('a[href="/team/"]').forEach(function (link) { link.href = '#team'; });
+  document.querySelectorAll('a[href^="/team/"]').forEach(function (link) { link.href = link.getAttribute('href').replace('/team/', '/en/team/'); });
   document.querySelector('.season-switch')?.setAttribute('aria-label', 'Seasons');
   document.querySelector('[aria-label="Сообщества Dzen Retreat"]')?.setAttribute('aria-label', 'Dzen Retreat communities');
+});
+
+window.addEventListener('load', function () {
+  document.querySelectorAll('a[href^="/team/"], a[href="#team"]').forEach(function (link) { var href = link.getAttribute('href'); link.href = href === '#team' ? '/en/team/' : href.replace('/team/', '/en/team/'); });
+  var sound = document.querySelector('.sound');
+  if (sound) sound.setAttribute('aria-label', 'Turn sound on or off');
 });
