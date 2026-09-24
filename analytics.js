@@ -10,6 +10,20 @@
   window.fbq('init', metaPixelId);
   window.fbq('track', 'PageView');
 
+  var yandexMetrikaId = 111820360;
+  window.ym = window.ym || function () { (window.ym.a = window.ym.a || []).push(arguments); };
+  window.ym.l = +new Date();
+  window.ym(yandexMetrikaId, 'init', {
+    clickmap: true,
+    trackLinks: true,
+    accurateTrackBounce: true
+  });
+
+  var metrikaTag = document.createElement('script');
+  metrikaTag.async = true;
+  metrikaTag.src = 'https://mc.yandex.ru/metrika/tag.js';
+  document.head.appendChild(metrikaTag);
+
   var tag = document.createElement('script');
   tag.async = true;
   tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
@@ -17,6 +31,7 @@
 
   function event(name, params) {
     if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+    if (typeof window.ym === 'function') window.ym(yandexMetrikaId, 'reachGoal', name, params || {});
   }
 
   document.addEventListener('click', function (eventObject) {
