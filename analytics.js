@@ -29,10 +29,28 @@
   tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
   document.head.appendChild(tag);
 
-  function event(name, params) {
-    if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
-    if (typeof window.ym === 'function') window.ym(yandexMetrikaId, 'reachGoal', name, params || {});
+  function attribution() {
+    var keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    var current = new URLSearchParams(window.location.search);
+    var saved = {};
+    try { saved = JSON.parse(sessionStorage.getItem('dzen_attribution') || '{}'); } catch (error) {}
+    keys.forEach(function (key) {
+      var value = current.get(key);
+      if (value) saved[key] = value.slice(0, 120);
+    });
+    try { sessionStorage.setItem('dzen_attribution', JSON.stringify(saved)); } catch (error) {}
+    return saved;
   }
+
+  function event(name, params) {
+    var payload = Object.assign({}, attribution(), params || {});
+    if (typeof window.gtag === 'function') window.gtag('event', name, payload);
+    if (typeof window.ym === 'function') window.ym(yandexMetrikaId, 'reachGoal', name, payload);
+    return payload;
+  }
+
+  window.dzenAttribution = attribution;
+  window.dzenTrack = event;
 
   document.addEventListener('click', function (eventObject) {
     var link = eventObject.target.closest && eventObject.target.closest('a');
