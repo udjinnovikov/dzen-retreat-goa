@@ -3,7 +3,11 @@
   const button = document.querySelector('.sound');
   if (!video || !button) return;
 
-  // Remove the old click handler and install one clear sound control.
+  // Always request the full-quality hero file and bypass any cached low-quality copy.
+  video.preload = 'auto';
+  video.src = '/assets/hotel-hero.mp4?v=20260925-hq';
+  video.load();
+
   const control = button.cloneNode(true);
   button.replaceWith(control);
 
@@ -11,9 +15,7 @@
     video.muted = muted;
     control.classList.toggle('is-on', !muted);
     const english = document.documentElement.lang === 'en';
-    const label = muted
-      ? (english ? 'Sound on' : 'Включить звук')
-      : (english ? 'Sound off' : 'Выключить звук');
+    const label = muted ? (english ? 'Sound on' : 'Включить звук') : (english ? 'Sound off' : 'Выключить звук');
     control.setAttribute('aria-label', label);
     const text = control.querySelector('.sound-label');
     if (text) text.textContent = label;
@@ -24,8 +26,6 @@
     try {
       await video.play();
     } catch {
-      // Browsers may block audible autoplay. Keep the video playing muted and
-      // leave the visible control ready for a single tap to enable sound.
       setState(true);
       try { await video.play(); } catch {}
     }
