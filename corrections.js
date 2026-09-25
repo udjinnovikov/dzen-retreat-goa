@@ -117,7 +117,7 @@ if (reviews) {
 const heroVideo = document.querySelector('.hero-video');
 if (heroVideo) {
   heroVideo.removeAttribute('data-chunks');
-  heroVideo.src = '/assets/hotel-hero-web.m4v';
+  heroVideo.src = '/assets/hotel-hero.mp4';
   heroVideo.load();
 }
 
