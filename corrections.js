@@ -376,3 +376,20 @@ if (new URLSearchParams(window.location.search).get('select-gallery') === '1') {
     setTimeout(removeLegacyGalleryFallback, 500);
   });
 })();
+
+
+// Remove only the six legacy photo cards appended by the old inline gallery fallback.
+(() => {
+  const removeLegacyPhotoCards = () => {
+    document.querySelectorAll('.gallery-grid button[aria-label="Открыть дополнительное фото"]').forEach((node) => node.remove());
+  };
+  const galleryGrid = document.querySelector('.gallery-grid');
+  if (!galleryGrid) return;
+  const observer = new MutationObserver(removeLegacyPhotoCards);
+  observer.observe(galleryGrid, { childList: true });
+  removeLegacyPhotoCards();
+  window.addEventListener('load', () => {
+    removeLegacyPhotoCards();
+    setTimeout(removeLegacyPhotoCards, 500);
+  });
+})();
