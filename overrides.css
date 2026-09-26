@@ -23,7 +23,7 @@
 .food img{display:block}
 .reviews-layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;padding:0 10vw 8rem}
 .review-video-card{grid-column:1/-1;display:grid;grid-template-columns:minmax(280px,.78fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:center;padding:0 0 2rem;border-bottom:1px solid var(--line)}
-.review-video-card video{display:block;width:100%;max-width:560px;aspect-ratio:9/16;object-fit:cover;object-position:50% 50%;background:#2f2a26;box-shadow:0 24px 55px #5f3d2b26}
+.review-video-card video{display:block;width:100%;max-width:560px;aspect-ratio:9/16;object-fit:cover;object-position:50% 50%;background:#2f2a26;border-radius:clamp(110px,14vw,190px) clamp(110px,14vw,190px) 24px 24px;box-shadow:0 24px 55px #5f3d2b26;outline:1px solid #fff8;outline-offset:-1px}
 .review-video-card h3{font-size:clamp(2rem,3vw,3.5rem);line-height:1.04;margin:.5rem 0 1.25rem}
 .review-video-card>div>p:last-child{color:var(--soft);max-width:300px}
 .review-card{min-height:250px;padding:2rem;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}
