@@ -393,3 +393,22 @@ if (new URLSearchParams(window.location.search).get('select-gallery') === '1') {
     setTimeout(removeLegacyPhotoCards, 500);
   });
 })();
+
+
+// Remove only legacy gallery cards that use old non-web gallery assets.
+(() => {
+  const removeLegacyGalleryAssets = () => {
+    document.querySelectorAll('.gallery-grid img[src*="/assets/gallery/"]').forEach((image) => {
+      image.closest('button')?.remove();
+    });
+  };
+  const galleryGrid = document.querySelector('.gallery-grid');
+  if (!galleryGrid) return;
+  const observer = new MutationObserver(removeLegacyGalleryAssets);
+  observer.observe(galleryGrid, { childList: true });
+  removeLegacyGalleryAssets();
+  window.addEventListener('load', () => {
+    removeLegacyGalleryAssets();
+    setTimeout(removeLegacyGalleryAssets, 500);
+  });
+})();
