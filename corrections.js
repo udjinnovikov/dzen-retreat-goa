@@ -117,8 +117,8 @@ if (reviews) {
 const heroVideo = document.querySelector('.hero-video');
 if (heroVideo) {
   heroVideo.removeAttribute('src');  if (typeof loadChunkedVideo === 'function') loadChunkedVideo(heroVideo);
-  heroVideo.src = '/assets/hotel-hero.mp4';
-  heroVideo.load();
+  heroVideo.src = '/assets/';
+  
 }
 
 // The bilingual content is updated by the original language control.
