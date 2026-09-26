@@ -1,4 +1,19 @@
-document.querySelectorAll('.eyebrow').forEach((el) => {
+
+
+// Use high-quality chunked versions for the review and team videos only.
+(() => {
+  const sources = {
+    '.review-video-card video': '/assets/review-01-chunks/part-00,/assets/review-01-chunks/part-01,/assets/review-01-chunks/part-02,/assets/review-01-chunks/part-03,/assets/review-01-chunks/part-04',
+    '.team-showcase-video video': '/assets/team-video-web-chunks/part-00,/assets/team-video-web-chunks/part-01,/assets/team-video-web-chunks/part-02,/assets/team-video-web-chunks/part-03'
+  };
+  Object.entries(sources).forEach(([selector, chunks]) => {
+    const video = document.querySelector(selector);
+    if (!video) return;
+    video.removeAttribute('src');
+    video.dataset.chunks = chunks;
+    video.load();
+  });
+})();document.querySelectorAll('.eyebrow').forEach((el) => {
   el.textContent = el.textContent.replace(/^\d+\s*\/\s*/, '');
 });
 
@@ -477,3 +492,19 @@ window.setInterval(() => {
   video.setAttribute('playsinline', '');
   video.play().catch(() => {});
 })();
+
+
+// Activate high-quality review and team video chunks after their players are created.
+window.addEventListener('load', () => {
+  const sources = {
+    '.review-video-card video': '/assets/review-01-chunks/part-00,/assets/review-01-chunks/part-01,/assets/review-01-chunks/part-02,/assets/review-01-chunks/part-03,/assets/review-01-chunks/part-04',
+    '.team-showcase-video video': '/assets/team-video-web-chunks/part-00,/assets/team-video-web-chunks/part-01,/assets/team-video-web-chunks/part-02,/assets/team-video-web-chunks/part-03'
+  };
+  Object.entries(sources).forEach(([selector, chunks]) => {
+    const video = document.querySelector(selector);
+    if (!video) return;
+    video.removeAttribute('src');
+    video.dataset.chunks = chunks;
+    video.load();
+  });
+});
