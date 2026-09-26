@@ -62,3 +62,7 @@
   .reviews-layout > .review-card{min-height:220px}
   .programme-list > details:not([open]){min-height:94px}
 }
+
+/* Keep the team video fluid on tablet and mobile. */
+.team-showcase-video{width:100%;max-width:100%;overflow:hidden}
+.team-showcase-video video{display:block;width:100%!important;max-width:100%;height:auto!important;object-fit:cover}
