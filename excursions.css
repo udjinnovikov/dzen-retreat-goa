@@ -1,0 +1,32 @@
+.excursions-page{background:var(--flow-paper);color:var(--flow-ink)}
+.excursions-main{max-width:1240px;margin:auto;padding:4rem 5vw 7rem}
+.excursions-hero{display:grid;grid-template-columns:1fr .95fr;gap:3rem;align-items:end;margin-bottom:5rem}
+.excursions-kicker{font-size:.7rem;letter-spacing:.16em;color:#9b6044;margin:0 0 1rem}
+.excursions-title{font:400 clamp(3.4rem,7vw,7.2rem)/.88 Georgia,serif;letter-spacing:-.065em;margin:0 0 1.5rem}
+.excursions-title em,.excursions-h2 em{font-weight:400;color:#c67b59}
+.excursions-lead{max-width:650px;font-size:1.12rem;line-height:1.65;color:var(--flow-soft)}
+.excursions-hero-media{min-height:510px;position:relative;overflow:hidden;background:#dec6b4}
+.excursions-hero-media img{width:100%;height:100%;position:absolute;object-fit:cover;filter:saturate(1.08) contrast(1.02)}
+.excursions-stamp{position:absolute;right:1.25rem;bottom:1.25rem;background:#f7e3d5;padding:1.25rem;max-width:240px;font:1.35rem/1.05 Georgia,serif}
+.excursions-intro{border-top:1px solid var(--flow-line);border-bottom:1px solid var(--flow-line);padding:2rem 0;margin-bottom:5rem;display:grid;grid-template-columns:.7fr 1.3fr;gap:3rem}
+.excursions-intro p{margin:0;color:var(--flow-soft);line-height:1.7;max-width:700px}
+.excursions-h2{font:400 clamp(2.8rem,5vw,5.2rem)/.92 Georgia,serif;letter-spacing:-.05em;margin:.4rem 0 1.4rem}
+.excursion{padding:5rem 0;border-top:1px solid var(--flow-line)}
+.excursion-grid{display:grid;grid-template-columns:.86fr 1.14fr;gap:4rem;align-items:start}
+.excursion:nth-of-type(odd) .excursion-grid{grid-template-columns:1.14fr .86fr}
+.excursion:nth-of-type(odd) .excursion-copy{order:2}
+.excursion-copy p{font-size:1.06rem;line-height:1.72;color:var(--flow-soft)}
+.excursion-number{font:400 1rem Georgia,serif;color:#9b6044;margin:0 0 1rem}
+.excursion-meta{display:flex;gap:.6rem;flex-wrap:wrap;margin:1.4rem 0 1.8rem}
+.excursion-meta span{padding:.55rem .75rem;border:1px solid var(--flow-line);font-size:.74rem;letter-spacing:.05em;background:#fffaf5}
+.excursion-mosaic{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem}
+.excursion-mosaic img{width:100%;height:100%;min-height:230px;object-fit:cover;display:block}
+.excursion-mosaic img:first-child{grid-row:span 2;min-height:480px}
+.excursion-note{margin-top:1.4rem;padding:1.1rem 1.2rem;background:#f8ede5;border-left:3px solid var(--flow-peach);font-size:.92rem;line-height:1.55;color:var(--flow-soft)}
+.excursions-band{background:#e8cbb9;padding:4rem;display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:end;margin-top:5rem}
+.excursions-band p{color:#58483f;line-height:1.65}
+.excursions-cta{display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;padding:1rem 1.2rem;color:white;background:#2a211d;font-size:.9rem;margin-top:1rem}
+.excursions-footer{margin-top:5rem;padding-top:2rem;border-top:1px solid var(--flow-line);display:flex;justify-content:space-between;gap:1rem;align-items:center;color:var(--flow-soft)}
+.excursions-footer a{color:inherit}
+@media(max-width:900px){.excursions-main{padding-top:3rem}.excursions-hero,.excursions-intro,.excursion-grid,.excursion:nth-of-type(odd) .excursion-grid,.excursions-band{grid-template-columns:1fr}.excursion:nth-of-type(odd) .excursion-copy{order:initial}.excursions-hero-media{min-height:380px}.excursion{padding:4rem 0}}
+@media(max-width:560px){.excursions-main{padding:2.5rem 6vw 5rem}.excursions-title{font-size:3.3rem}.excursions-hero{gap:2rem;margin-bottom:3rem}.excursions-hero-media{margin:0 -6vw;min-height:360px}.excursion-mosaic{grid-template-columns:1fr}.excursion-mosaic img:first-child{grid-row:auto;min-height:320px}.excursions-band{padding:2rem;margin-left:-6vw;margin-right:-6vw}.excursions-footer{align-items:flex-start;flex-direction:column}}
