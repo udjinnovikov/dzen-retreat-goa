@@ -47,6 +47,7 @@
   border-radius: 4px !important;
   box-shadow: 0 24px 58px rgba(50, 36, 26, .15) !important;
 }
+.wide-image::after { content: none !important; display: none !important; }
 
 /* One clean ecstatic-dance finale: words on warm paper, full image beside them. */
 .closing {
