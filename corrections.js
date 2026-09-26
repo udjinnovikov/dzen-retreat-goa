@@ -116,7 +116,7 @@ if (reviews) {
 // The production build will receive web-optimised copies before publishing.
 const heroVideo = document.querySelector('.hero-video');
 if (heroVideo) {
-  heroVideo.removeAttribute('src');  if (typeof loadChunkedVideo === 'function') loadChunkedVideo(heroVideo);
+  heroVideo.dataset.chunks = '/assets/hotel-hero-chunks/part-00,/assets/hotel-hero-chunks/part-01,/assets/hotel-hero-chunks/part-02,/assets/hotel-hero-chunks/part-03'; heroVideo.removeAttribute('src'); if (typeof loadChunkedVideo === 'function') loadChunkedVideo(heroVideo);
   heroVideo.src = '/assets/';
   
 }
