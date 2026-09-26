@@ -7,20 +7,28 @@
 .excursions-lead{max-width:650px;font-size:1.12rem;line-height:1.65;color:var(--flow-soft)}
 .excursions-hero-media{min-height:510px;position:relative;overflow:hidden;background:#dec6b4}
 .excursions-hero-media img{width:100%;height:100%;position:absolute;object-fit:cover;filter:saturate(1.08) contrast(1.02)}
-.excursions-stamp{position:absolute;right:1.25rem;bottom:1.25rem;background:#f7e3d5;padding:1.25rem;max-width:240px;font:1.35rem/1.05 Georgia,serif}
+.excursions-stamp{position:absolute;left:1.5rem;top:1.5rem;right:auto;bottom:auto;max-width:250px;padding:.8rem 0 0 1rem;border-left:1px solid #fff9;color:#fff;font:1.45rem/1.05 Georgia,serif;letter-spacing:-.02em;text-shadow:0 2px 18px #16100dcc}
+.excursions-stamp::before{content:'GOA FLOW · EXCURSION';display:block;margin-bottom:.7rem;color:#fff9;font:500 .58rem/1 'DM Mono',monospace;letter-spacing:.16em}
 .excursions-intro{border-top:1px solid var(--flow-line);border-bottom:1px solid var(--flow-line);padding:2rem 0;margin-bottom:5rem;display:grid;grid-template-columns:.7fr 1.3fr;gap:3rem}
 .excursions-intro p{margin:0;color:var(--flow-soft);line-height:1.7;max-width:700px}
 .excursions-h2{font:400 clamp(2.8rem,5vw,5.2rem)/.92 Georgia,serif;letter-spacing:-.05em;margin:.4rem 0 1.4rem}
 .excursion{padding:5rem 0;border-top:1px solid var(--flow-line)}
-.excursion-grid{display:grid;grid-template-columns:.86fr 1.14fr;gap:4rem;align-items:start}
-.excursion:nth-of-type(odd) .excursion-grid{grid-template-columns:1.14fr .86fr}
-.excursion:nth-of-type(odd) .excursion-copy{order:2}
+.excursion-grid{display:grid;grid-template-columns:1fr;gap:2.4rem;align-items:start}
+.excursion:nth-of-type(odd) .excursion-grid{grid-template-columns:1fr}
+.excursion:nth-of-type(odd) .excursion-copy{order:1}
+.excursion-grid .excursion-mosaic{order:2}
 .excursion-copy p{font-size:1.06rem;line-height:1.72;color:var(--flow-soft)}
 .excursion-number{font:400 1rem Georgia,serif;color:#9b6044;margin:0 0 1rem}
 .excursion-meta{display:flex;gap:.6rem;flex-wrap:wrap;margin:1.4rem 0 1.8rem}
 .excursion-meta span{padding:.55rem .75rem;border:1px solid var(--flow-line);font-size:.74rem;letter-spacing:.05em;background:#fffaf5}
-.excursion-mosaic{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem}
-.excursion-mosaic img{width:100%;height:100%;min-height:230px;object-fit:cover;display:block}
+.excursion-mosaic{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem;isolation:isolate}
+.excursion-mosaic img{width:100%;height:100%;min-height:230px;object-fit:cover;display:block;position:relative;border-radius:1.4rem;box-shadow:0 18px 40px #3c2b221c;filter:saturate(1.04) contrast(1.02);transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .35s,box-shadow .35s}
+.excursion-mosaic img:hover{z-index:2;transform:scale(1.035) rotate(-.35deg);filter:saturate(1.12) contrast(1.04);box-shadow:0 24px 55px #3c2b2240}
+.excursion-mosaic:has(img:hover)::after{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 50% 35%,#f1d2bf55,transparent 62%);filter:blur(28px)}
+.excursion-mosaic img:nth-child(2){border-radius:2.2rem 1rem 1rem 2.2rem}
+.excursion-mosaic img:nth-child(3){border-radius:1rem 2.2rem 2.2rem 1rem}
+.excursion-mosaic img:nth-child(4){border-radius:2.2rem 1rem 1rem 2.2rem}
+.excursion-mosaic img:nth-child(4){grid-column:2;min-height:180px}
 .excursion-mosaic img:first-child{grid-row:span 2;min-height:480px}
 .excursion--optional .excursion-mosaic{grid-template-columns:1fr}
 .excursion--optional .excursion-mosaic img:first-child{grid-row:auto;min-height:480px}
@@ -46,5 +54,6 @@
 .excursion-bridge-cta{display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;padding:1rem 1.2rem;color:#fff;background:#2a211d;font-size:.9rem}
 @media(max-width:900px){.excursion-bridge{grid-template-columns:1fr;gap:2rem;padding:4rem 0}.excursion-bridge-copy{padding:0 6vw}.excursion-bridge-media{padding:0 6vw;min-height:390px}}
 @media(max-width:560px){.excursion-bridge{padding:3.5rem 0}.excursion-bridge-list{grid-template-columns:1fr;gap:0}.excursion-bridge-list li{padding:.85rem 0}.excursion-bridge-media{grid-template-columns:1.15fr .85fr;min-height:300px;gap:.6rem}.excursion-bridge-media img:last-child{min-height:100px}}
-@media(max-width:900px){.excursions-main{padding-top:3rem}.excursions-hero,.excursions-intro,.excursion-grid,.excursion:nth-of-type(odd) .excursion-grid,.excursions-band{grid-template-columns:1fr}.excursion:nth-of-type(odd) .excursion-copy{order:initial}.excursions-hero-media{min-height:380px}.excursion{padding:4rem 0}}
+@media(max-width:900px){.excursions-main{padding-top:3rem}.excursions-hero,.excursions-intro,.excursion-grid,.excursion:nth-of-type(odd) .excursion-grid,.excursions-band{grid-template-columns:1fr}.excursion:nth-of-type(odd) .excursion-copy{order:1}.excursions-hero-media{min-height:380px}.excursion{padding:4rem 0}}
 @media(max-width:560px){.excursions-main{padding:2.5rem 6vw 5rem}.excursions-title{font-size:3.3rem}.excursions-hero{gap:2rem;margin-bottom:3rem}.excursions-hero-media{margin:0 -6vw;min-height:360px}.excursion-mosaic{grid-template-columns:1fr}.excursion-mosaic img:first-child{grid-row:auto;min-height:320px}.excursions-band{padding:2rem;margin-left:-6vw;margin-right:-6vw}.excursions-footer{align-items:flex-start;flex-direction:column}}
+@media(max-width:560px){.excursion-mosaic img:nth-child(4){grid-column:auto;min-height:230px}.excursions-stamp{left:1rem;top:1rem;max-width:205px;font-size:1.15rem}}
