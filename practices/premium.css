@@ -89,6 +89,34 @@
 .closing .cta { color: var(--ink); background: transparent; border-color: var(--ink); backdrop-filter: none; }
 .closing .cta:hover { background: var(--ink); color: var(--cream); }
 
+/* A real two-column finale: copy and image stay independent at every size. */
+.closing {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: center;
+  background: var(--cream) !important;
+}
+
+.closing::before { content: none; display: none; }
+.closing-copy { min-width: 0; }
+.closing .kicker,
+.closing h2,
+.closing p,
+.closing .cta { width: auto; }
+.closing-image {
+  display: block;
+  width: 100%;
+  min-height: 560px;
+  height: 70vh;
+  max-height: 760px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 0 32px 80px rgba(32, 21, 13, .18);
+  animation: practice-image-drift 18s ease-in-out infinite;
+}
+
 @media (max-width: 760px) {
   .practice-section { padding: 18vw 1.2rem; }
   .practice-images { height: 390px; gap: .7rem; }
@@ -100,4 +128,7 @@
   .closing p,
   .closing .cta { width: 100%; }
   .closing h2 { font-size: 3.5rem; }
+
+  .closing { display: block; padding: 20vw 1.2rem; }
+  .closing-image { width: 100%; min-height: 0; height: 105vw; margin-top: 3rem; }
 }
