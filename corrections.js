@@ -102,7 +102,7 @@ if (reviews) {
     <div class="section-heading"><p class="eyebrow ink">ОТЗЫВЫ УЧАСТНИКОВ</p><h2>Истории, после которых<br><em>хочется поехать.</em></h2><p>Смотрите видео и читайте впечатления тех, кто уже прожил Goa Flow.</p></div>
     <div class="reviews-layout">
       <article class="review-video-card">
-        <video controls playsinline preload="metadata" poster="/assets/participants/participant-01.png" src="/assets/review-01-web.m4v"></video>
+        <video controls playsinline preload="metadata" poster="/assets/participants/participant-01-video.jpg" src="/assets/review-01-web.m4v"></video>
         <div><p class="eyebrow ink">ВИДЕООТЗЫВ</p><h3>Живое впечатление<br>об отдыхе и практике</h3><p>Настоящий рассказ участника — без постановки и рекламных обещаний.</p></div>
       </article>
       <article class="review-card"><p>«Этот ретрит стал перезагрузкой во всех смыслах. Атмосфера тепла и поддержки помогает отпустить лишнее и услышать себя».</p><footer><img src="/assets/participants/participant-01.png" alt="Анна"><span><b>Анна</b><small>Москва</small></span></footer></article>
