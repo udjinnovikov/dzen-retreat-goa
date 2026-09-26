@@ -456,7 +456,6 @@ if (new URLSearchParams(window.location.search).get('select-gallery') === '1') {
 })();
 
 // Keep the same precise cleanup active if an old script rebuilds its block later.
-setInterval(removeLegacyFallbackPhotos, 500);
 // Final safety sweep for legacy photo buttons.
 window.setInterval(() => {
   document.querySelectorAll('button').forEach((button) => {
