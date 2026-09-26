@@ -412,3 +412,18 @@ if (new URLSearchParams(window.location.search).get('select-gallery') === '1') {
     setTimeout(removeLegacyGalleryAssets, 500);
   });
 })();
+
+
+// Keep only the curated gallery-web cards in the public gallery.
+(() => {
+  const keepCuratedGalleryOnly = () => {
+    document.querySelectorAll('.gallery-grid button').forEach((card) => {
+      const image = card.querySelector('img');
+      if (!image || !image.getAttribute('src')?.includes('/assets/gallery-web/')) card.remove();
+    });
+  };
+  const galleryGrid = document.querySelector('.gallery-grid');
+  if (!galleryGrid) return;
+  new MutationObserver(keepCuratedGalleryOnly).observe(galleryGrid, { childList: true, subtree: true });
+  keepCuratedGalleryOnly();
+})();
