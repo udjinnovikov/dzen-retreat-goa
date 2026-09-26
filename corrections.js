@@ -454,3 +454,14 @@ if (new URLSearchParams(window.location.search).get('select-gallery') === '1') {
   observer.observe(document.body, { childList: true, subtree: true });
   removeLegacyFallbackPhotos();
 })();
+
+// Keep the same precise cleanup active if an old script rebuilds its block later.
+setInterval(removeLegacyFallbackPhotos, 500);
+// Final safety sweep for legacy photo buttons.
+window.setInterval(() => {
+  document.querySelectorAll('button').forEach((button) => {
+    const label = button.getAttribute('aria-label') || '';
+    const alt = button.querySelector('img')?.getAttribute('alt') || '';
+    if (label === 'Open photograph' || label === 'Открыть дополнительное фото' || /Goa (excursion|group) — Dzen Retreat Goa/i.test(alt)) button.remove();
+  });
+}, 500);
