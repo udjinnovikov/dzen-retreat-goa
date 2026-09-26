@@ -22,8 +22,8 @@
 .food{grid-template-columns:1fr 1fr}
 .food img{display:block}
 .reviews-layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;padding:0 10vw 8rem}
-.review-video-card{grid-column:1/-1;display:grid;grid-template-columns:1.25fr .75fr;gap:2.5rem;align-items:center;padding:0 0 2rem;border-bottom:1px solid var(--line)}
-.review-video-card video{width:100%;aspect-ratio:16/9;object-fit:cover;background:#2f2a26}
+.review-video-card{grid-column:1/-1;display:grid;grid-template-columns:minmax(280px,.78fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:center;padding:0 0 2rem;border-bottom:1px solid var(--line)}
+.review-video-card video{display:block;width:100%;max-width:560px;aspect-ratio:9/16;object-fit:cover;object-position:50% 50%;background:#2f2a26;box-shadow:0 24px 55px #5f3d2b26}
 .review-video-card h3{font-size:clamp(2rem,3vw,3.5rem);line-height:1.04;margin:.5rem 0 1.25rem}
 .review-video-card>div>p:last-child{color:var(--soft);max-width:300px}
 .review-card{min-height:250px;padding:2rem;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}
@@ -31,7 +31,7 @@
 .review-card footer{padding-top:1.3rem;border-top:1px solid var(--line);display:flex;align-items:center;gap:.8rem;font-size:.82rem}
 .review-card footer img{width:48px;height:48px;object-fit:cover;border-radius:50%}
 .review-card footer span{display:grid;gap:.1rem}.review-card footer small{color:var(--soft)}
-@media(max-width:800px){.reviews-layout{display:block;padding:0 7vw 5.5rem}.review-video-card{display:block;border:0;padding:0;margin-bottom:1rem}.review-video-card>div{padding:1.4rem 0}.review-card{margin-bottom:.8rem;min-height:220px}}
+@media(max-width:800px){.reviews-layout{display:block;padding:0 7vw 5.5rem}.review-video-card{display:block;border:0;padding:0;margin-bottom:1rem}.review-video-card video{max-width:none;aspect-ratio:9/16}.review-video-card>div{padding:1.4rem 0}.review-card{margin-bottom:.8rem;min-height:220px}}
 /* Desktop refinements requested before release. */
 @media (min-width:801px){
   .header-tools .language{display:inline-flex!important}
