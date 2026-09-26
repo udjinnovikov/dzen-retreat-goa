@@ -66,7 +66,7 @@
 .food{position:relative;overflow:hidden;isolation:isolate}
 .food:before{content:"";position:absolute;inset:-30px;z-index:-1;background:linear-gradient(90deg,#f4e5dcf2 0%,#f4e5dc8c 50%,#f4e5dc35 100%),url('/assets/food.png') center/cover;filter:blur(20px);transform:scale(1.08)}
 .food img{padding:2.2rem 2.2rem 2.2rem 0;object-fit:cover;border-radius:150px 0 0 12px;filter:saturate(.9) contrast(1.03);box-shadow:-20px 22px 55px #5f3d2b45}
-@media(max-width:800px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:155px;padding:.7rem;gap:.45rem}.gallery-item,.gallery-item.gallery-portrait{grid-column:span 1;grid-row:span 1;border-radius:2px}.gallery-item.gallery-hero{grid-column:span 2;grid-row:span 2;border-radius:70px 2px 2px}.gallery-item.gallery-landscape{grid-column:span 2;grid-row:span 1}.lightbox-nav.lightbox-prev{left:.7rem}.lightbox-nav.lightbox-next{right:.7rem!important}.food img{padding:1rem 7vw 2.5rem;border-radius:100px 0 0 0;min-height:0}}
+@media(max-width:800px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:155px;padding:.7rem;gap:.45rem}.gallery-item,.gallery-item.gallery-portrait{grid-column:span 1;grid-row:span 1;border-radius:2px}.gallery-item.gallery-hero{grid-column:span 2;grid-row:span 2;border-radius:70px 2px 2px}.gallery-item.gallery-landscape{grid-column:span 2;grid-row:span 1}.lightbox-nav.lightbox-prev{left:.7rem}.lightbox-nav.lightbox-next{right:.7rem!important}.food{grid-template-columns:minmax(0,1fr)}.food img{width:100%;max-width:100%;padding:1rem 7vw 2.5rem;border-radius:100px 0 0 0;min-height:0}}
 
 /* Soft photographic layers bring depth to the narrative sections. */
 .intro,.quote-section,.space{position:relative;isolation:isolate;overflow:hidden}
