@@ -22,11 +22,29 @@
 .excursion-mosaic{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem}
 .excursion-mosaic img{width:100%;height:100%;min-height:230px;object-fit:cover;display:block}
 .excursion-mosaic img:first-child{grid-row:span 2;min-height:480px}
+.excursion--optional .excursion-mosaic{grid-template-columns:1fr}
+.excursion--optional .excursion-mosaic img:first-child{grid-row:auto;min-height:480px}
 .excursion-note{margin-top:1.4rem;padding:1.1rem 1.2rem;background:#f8ede5;border-left:3px solid var(--flow-peach);font-size:.92rem;line-height:1.55;color:var(--flow-soft)}
 .excursions-band{background:#e8cbb9;padding:4rem;display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:end;margin-top:5rem}
 .excursions-band p{color:#58483f;line-height:1.65}
+.excursions-band-image{display:block;width:100%;height:240px;object-fit:cover;margin-bottom:1.2rem}
 .excursions-cta{display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;padding:1rem 1.2rem;color:white;background:#2a211d;font-size:.9rem;margin-top:1rem}
 .excursions-footer{margin-top:5rem;padding-top:2rem;border-top:1px solid var(--flow-line);display:flex;justify-content:space-between;gap:1rem;align-items:center;color:var(--flow-soft)}
 .excursions-footer a{color:inherit}
+.excursion-bridge{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:stretch;padding:5rem 0;border-top:1px solid var(--flow-line);border-bottom:1px solid var(--flow-line);background:#f8ede5}
+.excursion-bridge-copy{padding:1rem 0 1rem 5vw}
+.excursion-bridge-copy h2{font:400 clamp(2.8rem,5vw,5.2rem)/.92 Georgia,serif;letter-spacing:-.05em;margin:.4rem 0 1.4rem}
+.excursion-bridge-copy h2 em{font-weight:400;color:#c67b59}
+.excursion-bridge-copy>p:not(.eyebrow){max-width:620px;color:var(--flow-soft);font-size:1.06rem;line-height:1.72}
+.excursion-bridge-list{display:grid;grid-template-columns:1fr 1fr;gap:.7rem 1rem;margin:1.7rem 0 2rem;padding:0;list-style:none}
+.excursion-bridge-list li{padding:.8rem 0;border-top:1px solid var(--flow-line);font-size:.92rem;color:var(--flow-ink)}
+.excursion-bridge-list span{display:block;color:#9b6044;font:400 .9rem Georgia,serif;margin-bottom:.18rem}
+.excursion-bridge-media{display:grid;grid-template-columns:1.3fr .7fr;gap:1rem;min-height:470px;padding-right:5vw}
+.excursion-bridge-media img{width:100%;height:100%;object-fit:cover;display:block}
+.excursion-bridge-media img:first-child{grid-row:span 2}
+.excursion-bridge-media img:last-child{min-height:170px}
+.excursion-bridge-cta{display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;padding:1rem 1.2rem;color:#fff;background:#2a211d;font-size:.9rem}
+@media(max-width:900px){.excursion-bridge{grid-template-columns:1fr;gap:2rem;padding:4rem 0}.excursion-bridge-copy{padding:0 6vw}.excursion-bridge-media{padding:0 6vw;min-height:390px}}
+@media(max-width:560px){.excursion-bridge{padding:3.5rem 0}.excursion-bridge-list{grid-template-columns:1fr;gap:0}.excursion-bridge-list li{padding:.85rem 0}.excursion-bridge-media{grid-template-columns:1.15fr .85fr;min-height:300px;gap:.6rem}.excursion-bridge-media img:last-child{min-height:100px}}
 @media(max-width:900px){.excursions-main{padding-top:3rem}.excursions-hero,.excursions-intro,.excursion-grid,.excursion:nth-of-type(odd) .excursion-grid,.excursions-band{grid-template-columns:1fr}.excursion:nth-of-type(odd) .excursion-copy{order:initial}.excursions-hero-media{min-height:380px}.excursion{padding:4rem 0}}
 @media(max-width:560px){.excursions-main{padding:2.5rem 6vw 5rem}.excursions-title{font-size:3.3rem}.excursions-hero{gap:2rem;margin-bottom:3rem}.excursions-hero-media{margin:0 -6vw;min-height:360px}.excursion-mosaic{grid-template-columns:1fr}.excursion-mosaic img:first-child{grid-row:auto;min-height:320px}.excursions-band{padding:2rem;margin-left:-6vw;margin-right:-6vw}.excursions-footer{align-items:flex-start;flex-direction:column}}
