@@ -242,9 +242,11 @@ if (teamSection && !teamSection.querySelector('.team-showcase')) {
         <p data-ru="Несколько живых минут о людях, которые создают пространство Goa Flow — с вниманием к каждому участнику и без суеты." data-en="A few real minutes with the people who shape Goa Flow — with attention for every guest and no rushing.">Несколько живых минут о людях, которые создают пространство Goa Flow — с вниманием к каждому участнику и без суеты.</p>
       </div>
       <div class="team-showcase-video">
-        <video controls playsinline preload="metadata" poster="/assets/gallery-web/photo-005.jpg" src="/assets/team-video-web.m4v"></video>
+        <video controls playsinline preload="metadata" poster="/assets/gallery-web/photo-005.jpg" data-chunks="/assets/team-video-web-chunks/part-00,/assets/team-video-web-chunks/part-01,/assets/team-video-web-chunks/part-02,/assets/team-video-web-chunks/part-03"></video>
       </div>
     </div>`);
+  const teamVideo = teamSection.querySelector('.team-showcase-video video[data-chunks]');
+  if (teamVideo && typeof loadChunkedVideo === 'function') loadChunkedVideo(teamVideo);
 }
 
 // Use the generous space below the dates heading for a useful, lightweight
