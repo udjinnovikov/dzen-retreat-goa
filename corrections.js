@@ -102,7 +102,7 @@ if (reviews) {
     <div class="section-heading"><p class="eyebrow ink">ОТЗЫВЫ УЧАСТНИКОВ</p><h2>Истории, после которых<br><em>хочется поехать.</em></h2><p>Смотрите видео и читайте впечатления тех, кто уже прожил Goa Flow.</p></div>
     <div class="reviews-layout">
       <article class="review-video-card">
-        <video controls playsinline preload="none" poster="/assets/participants/participant-01.png" src="/assets/review-01.mp4"></video>
+        <video controls playsinline preload="metadata" poster="/assets/participants/participant-01.png" data-chunks="/assets/review-01-chunks/part-00,/assets/review-01-chunks/part-01,/assets/review-01-chunks/part-02,/assets/review-01-chunks/part-03,/assets/review-01-chunks/part-04"></video>
         <div><p class="eyebrow ink">ВИДЕООТЗЫВ</p><h3>Живое впечатление<br>об отдыхе и практике</h3><p>Настоящий рассказ участника — без постановки и рекламных обещаний.</p></div>
       </article>
       <article class="review-card"><p>«Этот ретрит стал перезагрузкой во всех смыслах. Атмосфера тепла и поддержки помогает отпустить лишнее и услышать себя».</p><footer><img src="/assets/participants/participant-01.png" alt="Анна"><span><b>Анна</b><small>Москва</small></span></footer></article>
@@ -111,6 +111,8 @@ if (reviews) {
       <article class="review-card"><p>«Океан рядом — отдельная магия. Утренние практики под шум волн и закаты помогают по-настоящему замедлиться».</p><footer><img src="/assets/participants/participant-04.png" alt="Ирина"><span><b>Ирина</b><small>Владивосток</small></span></footer></article>
     </div>`;
 }
+
+document.querySelectorAll('.review-video-card video[data-chunks]').forEach(video => { if (typeof loadChunkedVideo === 'function') loadChunkedVideo(video); });
 
 // Local preview uses the original MP4 files so the video controls work reliably.
 // The production build will receive web-optimised copies before publishing.
