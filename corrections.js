@@ -534,3 +534,25 @@ window.addEventListener('load', () => {
     }
   });
 });
+
+
+// Run again immediately because the review and team players are injected dynamically.
+(() => {
+  const sources = {
+    '.review-video-card video': ['/assets/review-01-chunks/part-00','/assets/review-01-chunks/part-01','/assets/review-01-chunks/part-02','/assets/review-01-chunks/part-03','/assets/review-01-chunks/part-04'],
+    '.team-showcase-video video': ['/assets/team-video-web-chunks/part-00','/assets/team-video-web-chunks/part-01','/assets/team-video-web-chunks/part-02','/assets/team-video-web-chunks/part-03']
+  };
+  const load = async (video, urls) => {
+    try {
+      const parts = await Promise.all(urls.map((url) => fetch(url).then((response) => { if (!response.ok) throw new Error('chunk'); return response.arrayBuffer(); })));
+      video.querySelectorAll('source').forEach((source) => source.remove());
+      video.removeAttribute('src');
+      video.dataset.chunks = urls.join(',');
+      video.src = URL.createObjectURL(new Blob(parts, { type: 'video/mp4' }));
+      video.load();
+    } catch (error) {}
+  };
+  const run = () => Object.entries(sources).forEach(([selector, urls]) => { const video = document.querySelector(selector); if (video && !video.src.startsWith('blob:')) load(video, urls); });
+  run();
+  setTimeout(run, 1500);
+})();
