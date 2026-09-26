@@ -508,3 +508,29 @@ window.addEventListener('load', () => {
     video.load();
   });
 });
+
+
+// Load the high-quality review and team videos as assembled chunk blobs.
+window.addEventListener('load', () => {
+  const sources = {
+    '.review-video-card video': ['/assets/review-01-chunks/part-00','/assets/review-01-chunks/part-01','/assets/review-01-chunks/part-02','/assets/review-01-chunks/part-03','/assets/review-01-chunks/part-04'],
+    '.team-showcase-video video': ['/assets/team-video-web-chunks/part-00','/assets/team-video-web-chunks/part-01','/assets/team-video-web-chunks/part-02','/assets/team-video-web-chunks/part-03']
+  };
+  Object.entries(sources).forEach(async ([selector, urls]) => {
+    const video = document.querySelector(selector);
+    if (!video) return;
+    const fallback = video.getAttribute('src');
+    try {
+      const parts = await Promise.all(urls.map((url) => fetch(url).then((response) => {
+        if (!response.ok) throw new Error('video chunk');
+        return response.arrayBuffer();
+      })));
+      video.removeAttribute('src');
+      video.dataset.chunks = urls.join(',');
+      video.src = URL.createObjectURL(new Blob(parts, { type: 'video/mp4' }));
+      video.load();
+    } catch (error) {
+      if (fallback) video.setAttribute('src', fallback);
+    }
+  });
+});
