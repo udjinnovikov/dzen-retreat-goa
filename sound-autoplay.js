@@ -10,7 +10,7 @@
   video.muted = true;
   video.defaultMuted = true;
   video.preload = 'auto';
-  video.src = '/assets/hotel-hero.mp4?v=20260925-hq';
+  video.dataset.chunks = '/assets/hotel-hero-chunks/part-00,/assets/hotel-hero-chunks/part-01,/assets/hotel-hero-chunks/part-02,/assets/hotel-hero-chunks/part-03'; video.removeAttribute('src'); if (typeof loadChunkedVideo === 'function') loadChunkedVideo(video);
 
   const control = button.cloneNode(true);
   button.replaceWith(control);
