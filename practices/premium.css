@@ -39,6 +39,15 @@
 }
 .practice-images img:nth-child(2) { animation-delay: -7s !important; }
 
+/* The ecstatic-dance story needs its own bright, solid image. */
+.wide-image img {
+  opacity: 1 !important;
+  filter: saturate(1.1) brightness(1.06) contrast(1.02) !important;
+  animation: practice-image-drift 18s ease-in-out infinite !important;
+  border-radius: 4px !important;
+  box-shadow: 0 24px 58px rgba(50, 36, 26, .15) !important;
+}
+
 /* One clean ecstatic-dance finale: words on warm paper, full image beside them. */
 .closing {
   min-height: 0 !important;
