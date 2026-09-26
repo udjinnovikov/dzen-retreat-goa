@@ -491,3 +491,9 @@ function syncWhatsAppLinks() {
 
 syncWhatsAppLinks();
 document.querySelector('.language')?.addEventListener('click', () => setTimeout(syncWhatsAppLinks, 0));
+
+
+// Keep lead messages in the current language after every language switch.
+new MutationObserver(() => {
+  if (document.documentElement.lang === 'en') syncWhatsAppLinks();
+}).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
