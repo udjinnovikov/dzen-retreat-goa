@@ -497,3 +497,9 @@ document.querySelector('.language')?.addEventListener('click', () => setTimeout(
 new MutationObserver(() => {
   if (document.documentElement.lang === 'en') syncWhatsAppLinks();
 }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+
+
+// Re-run after the translation handlers finish updating labels and hrefs.
+document.querySelector('.language')?.addEventListener('click', () => {
+  [100, 500, 1200].forEach((delay) => setTimeout(syncWhatsAppLinks, delay));
+});
