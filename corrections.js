@@ -567,3 +567,20 @@ repairRussianCopy = function() {
   document.querySelectorAll('[aria-label], [alt]').forEach((node) => { if (node.hasAttribute('aria-label')) node.setAttribute('aria-label', decode(node.getAttribute('aria-label'))); if (node.hasAttribute('alt')) node.setAttribute('alt', decode(node.getAttribute('alt'))); });
 };
 repairRussianCopy();
+
+
+// Final browser-safe mojibake repair for Russian text.
+repairRussianCopy = function() {
+  if (document.documentElement.lang === 'en') return;
+  const cp1252 = {0x20AC:0x80,0x201A:0x82,0x192:0x83,0x201E:0x84,0x2026:0x85,0x2020:0x86,0x2021:0x87,0x2C6:0x88,0x2030:0x89,0x160:0x8A,0x2039:0x8B,0x152:0x8C,0x17D:0x8E,0x2018:0x91,0x2019:0x92,0x201C:0x93,0x201D:0x94,0x2022:0x95,0x2013:0x96,0x2014:0x97,0x2DC:0x98,0x2122:0x99,0x161:0x9A,0x203A:0x9B,0x153:0x9C,0x17E:0x9E,0x178:0x9F};
+  const toByte = (char) => { const code = char.charCodeAt(0); if (code >= 0x410 && code <= 0x44F) return code - 0x350; if (code === 0x401) return 0xA8; if (code === 0x451) return 0xB8; if (code >= 0x402 && code <= 0x40F) return code - 0x380; if (code >= 0x452 && code <= 0x45F) return code - 0x3C0; return cp1252[code] ?? (code <= 0xFF ? code : null); };
+  const decode = (value) => {
+    if (!/[РС](?![А-Яа-яЁё])/.test(value)) return value;
+    try { const bytes = []; for (const char of value) { const byte = toByte(char); if (byte == null) return value; bytes.push(byte); } const binary = String.fromCharCode(...bytes); return decodeURIComponent(binary.split('').map((char) => '%' + char.charCodeAt(0).toString(16).padStart(2, '0')).join('')); } catch (_) { return value; }
+  };
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach((node) => { node.nodeValue = decode(node.nodeValue); });
+  document.querySelectorAll('[aria-label], [alt]').forEach((node) => { if (node.hasAttribute('aria-label')) node.setAttribute('aria-label', decode(node.getAttribute('aria-label'))); if (node.hasAttribute('alt')) node.setAttribute('alt', decode(node.getAttribute('alt'))); });
+};
+repairRussianCopy();
