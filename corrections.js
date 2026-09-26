@@ -513,3 +513,23 @@ setInterval(() => {
     syncWhatsAppLinks();
   }
 }, 250);
+
+
+// Repair legacy mojibake in Russian copy without changing the English version.
+function repairRussianCopy() {
+  if (document.documentElement.lang === 'en') return;
+  const decode = (value) => {
+    if (!/[РС][\u0080-\u00bf]/.test(value)) return value;
+    try { return decodeURIComponent(escape(value)); } catch (_) { return value; }
+  };
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach((node) => { node.nodeValue = decode(node.nodeValue); });
+  document.querySelectorAll('[aria-label], [alt]').forEach((node) => {
+    if (node.hasAttribute('aria-label')) node.setAttribute('aria-label', decode(node.getAttribute('aria-label')));
+    if (node.hasAttribute('alt')) node.setAttribute('alt', decode(node.getAttribute('alt')));
+  });
+}
+repairRussianCopy();
+setInterval(repairRussianCopy, 500);
