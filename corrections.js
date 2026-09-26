@@ -359,3 +359,20 @@ if (new URLSearchParams(window.location.search).get('select-gallery') === '1') {
     item.dataset.galleryNumber = String(index + 1).padStart(2, '0');
   });
 }
+
+
+// Remove only the legacy gallery fallback appended by older page builds.
+(() => {
+  const removeLegacyGalleryFallback = () => {
+    document.querySelectorAll('.custom-gallery-item').forEach((node) => node.remove());
+  };
+  const galleryGrid = document.querySelector('.gallery-grid');
+  if (!galleryGrid) return;
+  const observer = new MutationObserver(removeLegacyGalleryFallback);
+  observer.observe(galleryGrid, { childList: true });
+  removeLegacyGalleryFallback();
+  window.addEventListener('load', () => {
+    removeLegacyGalleryFallback();
+    setTimeout(removeLegacyGalleryFallback, 500);
+  });
+})();
