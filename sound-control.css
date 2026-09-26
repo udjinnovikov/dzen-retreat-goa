@@ -1,0 +1,36 @@
+.hero > .sound {
+  position: absolute;
+  top: 24px;
+  right: 5.5vw;
+  z-index: 3;
+  min-height: 48px;
+  padding: 8px 18px 8px 10px;
+  gap: 10px;
+  border: 1px solid rgba(255,255,255,.85);
+  border-radius: 999px;
+  background: #faf7f2;
+  color: #2f2a26;
+  box-shadow: 0 4px 24px #211a2133;
+  font: 600 13px/1.2 'DM Sans', Arial, sans-serif;
+  letter-spacing: 0;
+  transition: transform .2s, background .2s;
+}
+.hero > .sound .sound-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f1d2bf;
+  font: 24px/1 Arial, sans-serif;
+}
+.hero > .sound:hover { transform: translateY(-2px); background: #fff; }
+.hero > .sound:focus-visible { outline: 3px solid #eab28e; outline-offset: 4px; }
+.hero > .sound.is-on { background: #f1d2bf; }
+.hero > .sound.is-on .sound-icon { background: #faf7f2; }
+@media (max-width: 800px) {
+  .hero > .sound { top: 18px; right: 6vw; min-height: 46px; padding-right: 15px; font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero > .sound { transition: none; }
+}

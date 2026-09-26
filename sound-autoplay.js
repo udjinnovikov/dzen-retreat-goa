@@ -18,11 +18,16 @@
   const setState = (muted) => {
     video.muted = muted;
     control.classList.toggle('is-on', !muted);
+    control.setAttribute('aria-pressed', String(!muted));
     const english = document.documentElement.lang === 'en';
     const label = muted ? (english ? 'Sound on' : 'Включить звук') : (english ? 'Sound off' : 'Выключить звук');
     control.setAttribute('aria-label', label);
     const text = control.querySelector('.sound-label');
-    if (text) text.textContent = label;
+    if (text) {
+      text.dataset.ru = muted ? 'Включить звук' : 'Звук включён';
+      text.dataset.en = muted ? 'Sound on' : 'Sound is on';
+      text.textContent = english ? text.dataset.en : text.dataset.ru;
+    }
   };
 
   const playMuted = () => {
