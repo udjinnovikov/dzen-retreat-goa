@@ -1,31 +1,27 @@
-/* Premium editorial art direction for the practices page. */
+/* Quiet, warm visual system for the Practices page. */
 @keyframes practice-image-drift {
   0%, 100% { transform: scale(1) translate3d(0, 0, 0); }
-  50% { transform: scale(1.035) translate3d(0, -8px, 0); }
+  50% { transform: scale(1.018) translate3d(0, -5px, 0); }
 }
 
-.practice-images::before { content: none !important; display: none !important; }
-.practice-images::after { content: none !important; display: none !important; }
-
-.practice-section {
-  background: var(--cream) !important;
-  padding: 8vw 7vw;
-}
-
-.practice-section.dark { background: #292522 !important; }
-.practice-section.dark .practice-copy { color: var(--cream); }
+/* Remove the old overlapping collage treatment. */
+.practice-section,
 .practice-section.peach,
 .practice-section.sand { background: var(--cream) !important; }
-
-.practice-images {
-  height: clamp(420px, 38vw, 570px);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-  padding: 0;
+.practice-section.dark { background: #322b27 !important; }
+.practice-section.dark .practice-copy { color: var(--cream); }
+.practice-section { padding: 8vw 7vw; }
+.practice-images,
+.reverse .practice-images {
+  height: clamp(420px, 38vw, 560px) !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 1.2rem !important;
+  padding: 0 !important;
   filter: none !important;
 }
-
+.practice-images::before,
+.practice-images::after { content: none !important; display: none !important; }
 .practice-images img,
 .practice-images img:first-child,
 .practice-images img:nth-child(2) {
@@ -33,103 +29,69 @@
   inset: auto !important;
   width: 100% !important;
   height: 100% !important;
-  transform: none !important;
   opacity: 1 !important;
   clip-path: none !important;
-  border-radius: 3px !important;
+  transform: none !important;
   object-fit: cover !important;
-  box-shadow: 0 28px 70px rgba(36, 26, 18, .18) !important;
-  animation: practice-image-drift 14s ease-in-out infinite !important;
+  border-radius: 4px !important;
+  box-shadow: 0 24px 58px rgba(50, 36, 26, .15) !important;
+  animation: practice-image-drift 15s ease-in-out infinite !important;
 }
-
 .practice-images img:nth-child(2) { animation-delay: -7s !important; }
-.practice-images:hover img:first-child,
-.practice-images:hover img:nth-child(2) { transform: scale(1.035) !important; }
 
-/* The closing promise becomes a real photograph, not a dark backdrop. */
+/* One clean ecstatic-dance finale: words on warm paper, full image beside them. */
 .closing {
-  min-height: 650px;
-  display: block;
-  position: relative;
-  isolation: isolate;
-  padding: 9vw 7vw;
-  background: var(--cream) !important;
+  min-height: 0 !important;
+  height: auto !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr) !important;
+  align-items: center !important;
+  gap: clamp(2.5rem, 7vw, 8rem) !important;
+  padding: clamp(4rem, 9vw, 9rem) 7vw !important;
+  background: #fbf6ef !important;
   color: var(--ink) !important;
   text-align: left !important;
-  overflow: hidden;
+  overflow: visible !important;
 }
-
-.closing::before {
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: 0;
-  right: 6vw;
-  top: 10%;
-  width: 43%;
-  height: 80%;
-  background: url('/assets/practices/ecstatic-dance-premium.png') center / cover no-repeat;
-  border-radius: 3px;
-  box-shadow: 0 32px 80px rgba(32, 21, 13, .18);
-}
-
+.closing::before,
+.closing::after { content: none !important; display: none !important; background: none !important; }
+.closing-copy { position: static !important; min-width: 0 !important; padding: 0 !important; }
 .closing .kicker,
 .closing h2,
 .closing p,
-.closing .cta { position: relative; z-index: 1; }
-
-.closing .kicker,
-.closing h2,
-.closing p,
-.closing .cta { width: 45%; margin-left: 0; }
-.closing .kicker { color: #8e7564; }
-.closing h2 { color: var(--ink); text-shadow: none; }
-.closing h2 em { color: var(--peach); }
-.closing p { color: var(--ink); text-shadow: none; }
-.closing .cta { color: var(--ink); background: transparent; border-color: var(--ink); backdrop-filter: none; }
-.closing .cta:hover { background: var(--ink); color: var(--cream); }
-
-/* A real two-column finale: copy and image stay independent at every size. */
-.closing {
-  min-height: 0;
-  display: grid;
-  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-  gap: clamp(2rem, 6vw, 7rem);
-  align-items: center;
-  background: var(--cream) !important;
-}
-
-.closing::before { content: none !important; display: none !important; }
-.closing-copy { min-width: 0; }
-.closing .kicker,
-.closing h2,
-.closing p,
-.closing .cta { width: auto; }
+.closing .cta { position: static !important; width: auto !important; margin-left: 0 !important; }
+.closing .kicker { color: #9b7963 !important; }
+.closing h2 { color: var(--ink) !important; text-shadow: none !important; }
+.closing h2 em { color: #cf8d68 !important; }
+.closing p { color: #5c5148 !important; text-shadow: none !important; }
+.closing .cta { color: var(--ink) !important; background: transparent !important; border-color: var(--ink) !important; }
 .closing-image {
-  display: block;
-  width: 100%;
-  min-height: 560px;
-  height: 70vh;
-  max-height: 760px;
-  object-fit: cover;
-  border-radius: 3px;
-  box-shadow: 0 32px 80px rgba(32, 21, 13, .18);
-  animation: practice-image-drift 18s ease-in-out infinite;
   position: static !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: clamp(420px, 50vw, 700px) !important;
+  min-height: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  opacity: 1 !important;
+  filter: saturate(1.08) brightness(1.08) contrast(1.02) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 28px 70px rgba(54, 37, 25, .14) !important;
+  animation: practice-image-drift 18s ease-in-out infinite !important;
 }
 
 @media (max-width: 760px) {
-  .practice-section { padding: 18vw 1.2rem; }
-  .practice-images { height: 390px; gap: .7rem; }
-  .practice-images img { height: 100% !important; }
-  .closing { padding: 20vw 1.2rem 110vw; min-height: auto; }
-  .closing::before { left: 1.2rem; right: 1.2rem; top: auto; bottom: 12vw; width: auto; height: 82vw; }
-  .closing .kicker,
-  .closing h2,
-  .closing p,
-  .closing .cta { width: 100%; }
-  .closing h2 { font-size: 3.5rem; }
-
-  .closing { display: block !important; padding: 20vw 1.2rem !important; background: var(--cream) !important; }
-  .closing-image { position: static !important; width: 100% !important; min-height: 0; height: 105vw; margin-top: 3rem; }
+  .practice-section { padding: 18vw 1.2rem !important; }
+  .practice-images,
+  .reverse .practice-images { height: 390px !important; gap: .7rem !important; }
+  .closing {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 2.4rem !important;
+    padding: 18vw 1.2rem !important;
+  }
+  .closing h2 { font-size: clamp(3.1rem, 13vw, 4.2rem) !important; }
+  .closing-image { height: 112vw !important; margin: 0 !important; }
 }
