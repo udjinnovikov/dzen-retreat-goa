@@ -427,3 +427,13 @@ if (new URLSearchParams(window.location.search).get('select-gallery') === '1') {
   new MutationObserver(keepCuratedGalleryOnly).observe(galleryGrid, { childList: true, subtree: true });
   keepCuratedGalleryOnly();
 })();
+
+
+// Remove legacy fallback buttons inserted outside the curated grid.
+(() => {
+  const gallerySection = document.querySelector('.gallery');
+  if (!gallerySection) return;
+  const removeLegacyButtons = () => gallerySection.querySelectorAll('button:not(.gallery-item)').forEach((button) => button.remove());
+  new MutationObserver(removeLegacyButtons).observe(gallerySection, { childList: true, subtree: true });
+  removeLegacyButtons();
+})();
