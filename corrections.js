@@ -464,3 +464,16 @@ window.setInterval(() => {
     if (label === 'Open photograph' || label === 'Открыть дополнительное фото' || /Goa (excursion|group) — Dzen Retreat Goa/i.test(alt)) button.remove();
   });
 }, 500);
+// Start the hero video automatically where the browser permits autoplay.
+// It stays muted so mobile browsers can start playback; the existing sound control remains available.
+(() => {
+  const video = document.querySelector('.hero-video');
+  if (!video) return;
+  video.autoplay = true;
+  video.muted = true;
+  video.playsInline = true;
+  video.setAttribute('autoplay', '');
+  video.setAttribute('muted', '');
+  video.setAttribute('playsinline', '');
+  video.play().catch(() => {});
+})();
