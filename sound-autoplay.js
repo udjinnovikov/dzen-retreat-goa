@@ -3,10 +3,14 @@
   const button = document.querySelector('.sound');
   if (!video || !button) return;
 
-  // Always request the full-quality hero file and bypass any cached low-quality copy.
+  // Start the hero video reliably. Browsers allow autoplay when it is muted.
+  video.autoplay = true;
+  video.loop = true;
+  video.playsInline = true;
+  video.muted = true;
+  video.defaultMuted = true;
   video.preload = 'auto';
   video.src = '/assets/hotel-hero.mp4?v=20260925-hq';
-  video.load();
 
   const control = button.cloneNode(true);
   button.replaceWith(control);
@@ -21,22 +25,42 @@
     if (text) text.textContent = label;
   };
 
-  const startVideo = async () => {
-    setState(false);
-    try {
-      await video.play();
-    } catch {
-      setState(true);
-      try { await video.play(); } catch {}
-    }
+  const playMuted = () => {
+    video.muted = true;
+    video.play().catch(() => {});
   };
 
+  const startVideo = () => {
+    setState(true);
+    playMuted();
+  };
+
+  setState(true);
   control.addEventListener('click', () => {
-    const muted = !video.muted;
-    setState(muted);
-    if (!muted) video.play().catch(() => setState(true));
+    if (video.muted) {
+      video.muted = false;
+      video.defaultMuted = false;
+      setState(false);
+      video.play().catch(() => {
+        setState(true);
+        playMuted();
+      });
+    } else {
+      setState(true);
+      playMuted();
+    }
   });
 
-  video.addEventListener('loadedmetadata', startVideo, { once: true });
-  if (video.readyState >= 1) startVideo();
+  video.addEventListener('loadedmetadata', startVideo);
+  video.addEventListener('canplay', startVideo);
+  video.addEventListener('loadeddata', startVideo);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && video.paused) playMuted();
+  });
+  window.addEventListener('pageshow', () => {
+    if (video.paused) playMuted();
+  });
+
+  video.load();
+  startVideo();
 })();
