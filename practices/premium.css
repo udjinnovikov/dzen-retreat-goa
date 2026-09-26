@@ -1,0 +1,98 @@
+/* Premium editorial art direction for the practices page. */
+@keyframes practice-image-drift {
+  0%, 100% { transform: scale(1) translate3d(0, 0, 0); }
+  50% { transform: scale(1.035) translate3d(0, -8px, 0); }
+}
+
+.practice-images::before { content: none !important; display: none !important; }
+.practice-images::after { content: none !important; display: none !important; }
+
+.practice-section {
+  background: var(--cream) !important;
+  padding: 8vw 7vw;
+}
+
+.practice-section.dark { background: #292522 !important; }
+.practice-section.dark .practice-copy { color: var(--cream); }
+.practice-section.peach,
+.practice-section.sand { background: var(--cream) !important; }
+
+.practice-images {
+  height: clamp(420px, 38vw, 570px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  padding: 0;
+  filter: none !important;
+}
+
+.practice-images img,
+.practice-images img:first-child,
+.practice-images img:nth-child(2) {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  transform: none !important;
+  opacity: 1 !important;
+  clip-path: none !important;
+  border-radius: 3px !important;
+  object-fit: cover !important;
+  box-shadow: 0 28px 70px rgba(36, 26, 18, .18) !important;
+  animation: practice-image-drift 14s ease-in-out infinite !important;
+}
+
+.practice-images img:nth-child(2) { animation-delay: -7s !important; }
+.practice-images:hover img:first-child,
+.practice-images:hover img:nth-child(2) { transform: scale(1.035) !important; }
+
+/* The closing promise becomes a real photograph, not a dark backdrop. */
+.closing {
+  min-height: 650px;
+  display: block;
+  position: relative;
+  isolation: isolate;
+  padding: 9vw 7vw;
+  background: var(--cream) !important;
+  color: var(--ink) !important;
+  text-align: left !important;
+  overflow: hidden;
+}
+
+.closing::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  right: 6vw;
+  top: 10%;
+  width: 43%;
+  height: 80%;
+  background: url('/assets/practices/ecstatic-dance-premium.png') center / cover no-repeat;
+  border-radius: 3px;
+  box-shadow: 0 32px 80px rgba(32, 21, 13, .18);
+}
+
+.closing .kicker,
+.closing h2,
+.closing p,
+.closing .cta { width: 45%; margin-left: 0; }
+.closing .kicker { color: #8e7564; }
+.closing h2 { color: var(--ink); text-shadow: none; }
+.closing h2 em { color: var(--peach); }
+.closing p { color: var(--ink); text-shadow: none; }
+.closing .cta { color: var(--ink); background: transparent; border-color: var(--ink); backdrop-filter: none; }
+.closing .cta:hover { background: var(--ink); color: var(--cream); }
+
+@media (max-width: 760px) {
+  .practice-section { padding: 18vw 1.2rem; }
+  .practice-images { height: 390px; gap: .7rem; }
+  .practice-images img { height: 100% !important; }
+  .closing { padding: 20vw 1.2rem 110vw; min-height: auto; }
+  .closing::before { left: 1.2rem; right: 1.2rem; top: auto; bottom: 12vw; width: auto; height: 82vw; }
+  .closing .kicker,
+  .closing h2,
+  .closing p,
+  .closing .cta { width: 100%; }
+  .closing h2 { font-size: 3.5rem; }
+}
