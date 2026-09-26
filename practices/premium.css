@@ -99,7 +99,7 @@
   background: var(--cream) !important;
 }
 
-.closing::before { content: none; display: none; }
+.closing::before { content: none !important; display: none !important; }
 .closing-copy { min-width: 0; }
 .closing .kicker,
 .closing h2,
@@ -115,6 +115,7 @@
   border-radius: 3px;
   box-shadow: 0 32px 80px rgba(32, 21, 13, .18);
   animation: practice-image-drift 18s ease-in-out infinite;
+  position: static !important;
 }
 
 @media (max-width: 760px) {
@@ -129,6 +130,6 @@
   .closing .cta { width: 100%; }
   .closing h2 { font-size: 3.5rem; }
 
-  .closing { display: block; padding: 20vw 1.2rem; }
-  .closing-image { width: 100%; min-height: 0; height: 105vw; margin-top: 3rem; }
+  .closing { display: block !important; padding: 20vw 1.2rem !important; background: var(--cream) !important; }
+  .closing-image { position: static !important; width: 100% !important; min-height: 0; height: 105vw; margin-top: 3rem; }
 }
