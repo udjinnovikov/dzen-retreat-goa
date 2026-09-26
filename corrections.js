@@ -503,3 +503,13 @@ new MutationObserver(() => {
 document.querySelector('.language')?.addEventListener('click', () => {
   [100, 500, 1200].forEach((delay) => setTimeout(syncWhatsAppLinks, delay));
 });
+
+
+// Poll the language state so lead messages stay correct even when another script changes it.
+let leadLanguage = document.documentElement.lang;
+setInterval(() => {
+  if (document.documentElement.lang !== leadLanguage) {
+    leadLanguage = document.documentElement.lang;
+    syncWhatsAppLinks();
+  }
+}, 250);
