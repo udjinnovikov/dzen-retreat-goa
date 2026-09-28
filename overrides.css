@@ -16,6 +16,8 @@
 .programme summary span{display:none}
 .programme details p{margin-left:0}
 .video-review video{width:100%;min-height:210px;object-fit:cover;background:#2f2a26}
+.hero-sales-note{display:inline-flex;align-items:center;width:max-content;max-width:100%;margin:0 0 1.25rem;padding:.55rem .8rem;border:1px solid #ffffff66;border-radius:999px;background:#2f2a268c;color:#fff;font:500 .68rem/1.35 'DM Mono',monospace;letter-spacing:.02em;backdrop-filter:blur(10px)}
+@media(max-width:800px){.hero-sales-note{font-size:.62rem;white-space:normal;border-radius:14px}}
 .price-table{margin:1.25rem 0 1.5rem;border-top:1px solid var(--line)}
 .price-table p{display:flex;justify-content:space-between;gap:1rem;padding:.75rem 0;margin:0!important;border-bottom:1px solid var(--line);color:var(--ink)}
 .price-table b{color:#a76a4e;white-space:nowrap}
