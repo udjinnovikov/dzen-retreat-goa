@@ -18,6 +18,8 @@
 .video-review video{width:100%;min-height:210px;object-fit:cover;background:#2f2a26}
 .hero-sales-note{display:inline-flex;align-items:center;width:max-content;max-width:100%;margin:0 0 1.25rem;padding:.55rem .8rem;border:1px solid #ffffff66;border-radius:999px;background:#2f2a268c;color:#fff;font:500 .68rem/1.35 'DM Mono',monospace;letter-spacing:.02em;backdrop-filter:blur(10px)}
 @media(max-width:800px){.hero-sales-note{font-size:.62rem;white-space:normal;border-radius:14px}}
+.sales-faq{display:grid;grid-template-columns:minmax(240px,.8fr) minmax(0,1.2fr);gap:clamp(2rem,8vw,8rem);padding:5.5rem 10vw 7rem;background:#f4e5dc}.sales-faq h2{font-size:clamp(2.8rem,4.6vw,5rem);line-height:1.02;margin:0}.sales-faq-list{border-top:1px solid #d7b9a7}.sales-faq details{border-bottom:1px solid #d7b9a7;padding:1.1rem 0}.sales-faq summary{display:flex;justify-content:space-between;gap:1rem;align-items:center;cursor:pointer;font:500 clamp(1.05rem,1.8vw,1.4rem)/1.2 'Playfair Display',Georgia,serif}.sales-faq summary b{font:400 1.2rem Arial}.sales-faq details[open] summary b{transform:rotate(45deg)}.sales-faq details p{max-width:650px;margin:1rem 2rem 0 0;color:var(--soft);line-height:1.6}
+@media(max-width:800px){.sales-faq{display:block;padding:4.5rem 7vw 5.5rem}.sales-faq h2{margin-bottom:2.3rem}.sales-faq details p{font-size:.95rem}}
 .price-table{margin:1.25rem 0 1.5rem;border-top:1px solid var(--line)}
 .price-table p{display:flex;justify-content:space-between;gap:1rem;padding:.75rem 0;margin:0!important;border-bottom:1px solid var(--line);color:var(--ink)}
 .price-table b{color:#a76a4e;white-space:nowrap}
