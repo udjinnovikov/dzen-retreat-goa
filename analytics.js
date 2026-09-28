@@ -52,6 +52,10 @@
   window.dzenAttribution = attribution;
   window.dzenTrack = event;
 
+  if (document.querySelector('.hero-sales-note')) {
+    event('view_price', { price_from: 650, next_retreat: '14–25 October', price_location: 'hero' });
+  }
+
   document.addEventListener('click', function (eventObject) {
     var link = eventObject.target.closest && eventObject.target.closest('a');
     if (!link) return;
@@ -77,4 +81,15 @@
       event('video_start', { video_location: eventObject.target.closest('.team, .testimonials, .hero')?.className || 'site' });
     }
   }, true);
+
+  var priceBlock = document.querySelector('.dates');
+  if (priceBlock && 'IntersectionObserver' in window) {
+    var priceSeen = false;
+    new IntersectionObserver(function (entries) {
+      if (!priceSeen && entries.some(function (entry) { return entry.isIntersecting; })) {
+        priceSeen = true;
+        event('view_price', { price_from: 650, price_location: 'dates' });
+      }
+    }, { threshold: 0.25 }).observe(priceBlock);
+  }
 }());

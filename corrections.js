@@ -112,6 +112,19 @@ if (reviews) {
     </div>`;
 }
 
+// Put the decision-making information next to the first CTA, not only near the bottom.
+const heroContent = document.querySelector('.hero-content');
+if (heroContent && !heroContent.querySelector('.hero-sales-note')) {
+  heroContent.querySelector('.hero-actions a.button')?.setAttribute('data-cta', 'hero');
+  const salesNote = document.createElement('div');
+  salesNote.className = 'hero-sales-note';
+  salesNote.dataset.ru = '12 дней / 11 ночей · от $650 · ближайший заезд 14–25 октября';
+  salesNote.dataset.en = '12 days / 11 nights · from $650 · next retreat 14–25 October';
+  salesNote.textContent = document.documentElement.lang === 'en' ? salesNote.dataset.en : salesNote.dataset.ru;
+  heroContent.querySelector('.hero-actions')?.before(salesNote);
+  window.dzenTrack?.('view_price', { price_from: 650, next_retreat: '14–25 October' });
+}
+
 // Local preview uses the original MP4 files so the video controls work reliably.
 // The production build will receive web-optimised copies before publishing.
 const heroVideo = document.querySelector('.hero-video');
