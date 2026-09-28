@@ -112,37 +112,6 @@ if (reviews) {
     </div>`;
 }
 
-// Put the decision-making information next to the first CTA, not only near the bottom.
-const heroContent = document.querySelector('.hero-content');
-if (heroContent && !heroContent.querySelector('.hero-sales-note')) {
-  heroContent.querySelector('.hero-actions a.button')?.setAttribute('data-cta', 'hero');
-  const salesNote = document.createElement('div');
-  salesNote.className = 'hero-sales-note';
-  salesNote.dataset.ru = '12 дней / 11 ночей · от $650 · ближайший заезд 14–25 октября';
-  salesNote.dataset.en = '12 days / 11 nights · from $650 · next retreat 14–25 October';
-  salesNote.textContent = document.documentElement.lang === 'en' ? salesNote.dataset.en : salesNote.dataset.ru;
-  heroContent.querySelector('.hero-actions')?.before(salesNote);
-  window.dzenTrack?.('view_price', { price_from: 650, next_retreat: '14–25 October' });
-}
-
-const datesSection = document.querySelector('.dates');
-if (datesSection && !document.querySelector('.sales-faq')) {
-  const faq = document.createElement('section');
-  faq.className = 'sales-faq';
-  faq.innerHTML = `
-    <div><p class="eyebrow ink">ПЕРЕД БРОНИРОВАНИЕМ</p><h2>Важное —<br><em>без мелкого шрифта.</em></h2></div>
-    <div class="sales-faq-list">
-      <details><summary><span data-ru="Что входит в стоимость?" data-en="What is included in the price?">Что входит в стоимость?</span><b>+</b></summary><p data-ru="Проживание, трёхразовое питание, программа практик, две экскурсии и трансфер по программе. Перелёт и личные расходы оплачиваются отдельно." data-en="Accommodation, three meals a day, the practice programme, two excursions and the scheduled transfer are included. Flights and personal expenses are separate.">Проживание, трёхразовое питание, программа практик, две экскурсии и трансфер по программе. Перелёт и личные расходы оплачиваются отдельно.</p></details>
-      <details><summary><span data-ru="Нужен ли опыт йоги?" data-en="Do I need yoga experience?">Нужен ли опыт йоги?</span><b>+</b></summary><p data-ru="Нет. Практики адаптируются под группу, а темп ретрита подходит и тем, кто только начинает." data-en="No. Practices are adapted to the group, and the retreat pace works well for beginners too.">Нет. Практики адаптируются под группу, а темп ретрита подходит и тем, кто только начинает.</p></details>
-      <details><summary><span data-ru="Как бронируется место?" data-en="How do I reserve a place?">Как бронируется место?</span><b>+</b></summary><p data-ru="Вы выбираете даты и номер, пишете нам в WhatsApp, а затем вносите невозвратную предоплату $150 — она входит в стоимость поездки." data-en="Choose your dates and room, message us on WhatsApp, then pay a non-refundable $150 deposit. It is included in the trip price.">Вы выбираете даты и номер, пишете нам в WhatsApp, а затем вносите невозвратную предоплату $150 — она входит в стоимость поездки.</p></details>
-      <details><summary><span data-ru="Кто будет в группе?" data-en="Who joins the group?">Кто будет в группе?</span><b>+</b></summary><p data-ru="Небольшая группа людей, которые хотят совместить океан, практики и живое знакомство с Гоа без спешки." data-en="A small group of people who want to combine the ocean, practices and a genuine experience of Goa without rushing.">Небольшая группа людей, которые хотят совместить океан, практики и живое знакомство с Гоа без спешки.</p></details>
-    </div>`;
-  datesSection.after(faq);
-  faq.querySelectorAll('details').forEach((item) => item.addEventListener('toggle', () => {
-    if (item.open) window.dzenTrack?.('faq_open', { question: item.querySelector('summary').textContent.trim() });
-  }));
-}
-
 // Local preview uses the original MP4 files so the video controls work reliably.
 // The production build will receive web-optimised copies before publishing.
 const heroVideo = document.querySelector('.hero-video');
