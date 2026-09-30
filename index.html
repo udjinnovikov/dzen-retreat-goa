@@ -68,7 +68,7 @@
 }
 </script>
 
-<script>document.addEventListener('DOMContentLoaded',()=>{const v=document.querySelector('.team-showcase-video video');if(v)v.poster='/assets/team/team-video-poster.jpeg'});</script>
+<script>document.addEventListener('DOMContentLoaded',()=>{const wrap=document.querySelector('.team-showcase-video'),v=wrap?.querySelector('video');if(!wrap||!v)return;v.poster='/assets/team/team-video-poster.jpeg';const cover=document.createElement('img');cover.src='/assets/team/team-video-poster.jpeg';cover.alt='Команда Dzen Retreat';cover.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;pointer-events:none';wrap.append(cover);const hide=()=>cover.remove();v.addEventListener('play',hide,{once:true});if(!v.paused)hide()});</script>
   <link rel="manifest" href="/site.webmanifest">
 <script defer="" src="/analytics.js?v=20260928-sales-2"></script>
 <link rel="stylesheet" href="/sound-control.css?v=20260926-top-right">
