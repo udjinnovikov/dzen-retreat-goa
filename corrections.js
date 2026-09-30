@@ -253,7 +253,7 @@ if (teamSection && !teamSection.querySelector('.team-showcase')) {
         <p data-ru="Несколько живых минут о людях, которые создают пространство Goa Flow — с вниманием к каждому участнику и без суеты." data-en="A few real minutes with the people who shape Goa Flow — with attention for every guest and no rushing.">Несколько живых минут о людях, которые создают пространство Goa Flow — с вниманием к каждому участнику и без суеты.</p>
       </div>
       <div class="team-showcase-video">
-        <video controls playsinline preload="metadata" poster="/assets/gallery-web/photo-005.jpg" src="/assets/team-video-web.m4v"></video>
+        <video controls playsinline preload="metadata" poster="/assets/team/team-video-poster.jpeg" src="/assets/team-video-web.m4v"></video>
       </div>
     </div>`);
 }
