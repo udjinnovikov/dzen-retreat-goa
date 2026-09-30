@@ -68,7 +68,7 @@
 }
 </script>
 
-<script>document.addEventListener('DOMContentLoaded',()=>{const wrap=document.querySelector('.team-showcase-video'),v=wrap?.querySelector('video');if(!wrap||!v)return;v.poster='/assets/team/team-video-poster.jpeg';const cover=document.createElement('img');cover.src='/assets/team/team-video-poster.jpeg';cover.alt='Команда Dzen Retreat';cover.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;pointer-events:none';wrap.append(cover);const play=document.createElement('button');play.type='button';play.innerHTML='<span style="font-size:1.5em;line-height:1">▶</span><span style="display:flex;flex-direction:column;gap:.18rem;text-align:left"><strong style="font:600 1em DM Mono,monospace">Смотреть видео</strong><small style="font:400 .78em DM Mono,monospace;opacity:.8">Команда · 1:07</small></span>';play.setAttribute('aria-label','Смотреть видео команды, 1 минута 7 секунд');play.style.cssText='position:absolute;top:1.25rem;left:1.25rem;z-index:3;display:flex;align-items:center;gap:.7rem;border:1px solid #fff;background:#2f2925f2;color:#fff;border-radius:999px;padding:1rem 1.35rem;box-shadow:0 10px 28px #21171166;cursor:pointer';wrap.append(play);const hide=()=>{cover.remove();play.remove()};play.addEventListener('click',()=>v.play().catch(()=>{}));v.addEventListener('play',hide,{once:true});if(!v.paused)hide()});</script>
+<script>document.addEventListener('DOMContentLoaded',()=>{const v=document.querySelector('.team-showcase-video video');if(!v)return;v.removeAttribute('poster');v.controls=true;v.load()});</script>
   <link rel="manifest" href="/site.webmanifest">
 <script defer="" src="/analytics.js?v=20260928-sales-2"></script>
 <link rel="stylesheet" href="/sound-control.css?v=20260926-top-right">
