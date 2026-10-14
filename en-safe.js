@@ -12,6 +12,59 @@
     if (node && node.textContent.trim() !== value) node.textContent = value;
   };
 
+  const canonicalNav = {
+    desktopMore: [
+      ['Accommodation', '#space'],
+      ['Food', '#food'],
+      ['Excursions', '/en/excursions/'],
+      ['Practices', '#rhythm'],
+      ['Guest stories', '#reviews'],
+      ['Hampi', '/en/hampi/'],
+      ['FAQ', '/en/faq/'],
+      ['All practices', '/en/practices/'],
+      ['Goa Guide', '/en/guide/'],
+      ['Contact', '#contacts']
+    ],
+    mobile: [
+      ['About', '#about'],
+      ['12-day programme', '#programme'],
+      ['Accommodation', '#space'],
+      ['Food', '#food'],
+      ['Excursions', '/en/excursions/'],
+      ['Practices', '#rhythm'],
+      ['Gallery', '#gallery'],
+      ['Guest stories', '#reviews'],
+      ['Team', '/en/team/'],
+      ['Dates & prices', '#dates'],
+      ['Hampi', '/en/hampi/'],
+      ['FAQ', '/en/faq/'],
+      ['All practices', '/en/practices/'],
+      ['Goa Guide', '/en/guide/'],
+      ['Contact', '#contacts'],
+      ['Message on WhatsApp ↗', 'https://wa.me/79958390508?text=Hello!%20I%20would%20like%20to%20learn%20about%20Goa%20Flow']
+    ]
+  };
+
+  const repairNav = (selector, items) => {
+    const nav = document.querySelector(selector);
+    if (!nav) return;
+    const links = [...nav.querySelectorAll(':scope > a')];
+    items.forEach(([label, href], index) => {
+      const link = links[index];
+      if (!link) return;
+      replaceText(link, label);
+      if (link.getAttribute('href') !== href) link.setAttribute('href', href);
+      if (href.startsWith('https://')) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener');
+      } else {
+        link.removeAttribute('target');
+        link.removeAttribute('rel');
+      }
+    });
+    links.slice(items.length).forEach((link) => link.remove());
+  };
+
   const loadChunkedVideo = async (video, parts, label) => {
     if (!video || video.dataset.enSafeVideo === 'loading' || video.dataset.enSafeVideo === 'ready') return;
     video.dataset.enSafeVideo = 'loading';
@@ -29,6 +82,9 @@
   };
 
   const translateDynamicLabels = () => {
+    repairNav('.desktop-more nav', canonicalNav.desktopMore);
+    repairNav('#mobile-menu', canonicalNav.mobile);
+
     document.querySelectorAll('[data-en]').forEach((node) => {
       const value = node.dataset.en;
       if (!value) return;
