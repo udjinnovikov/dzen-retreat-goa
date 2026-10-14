@@ -3,8 +3,11 @@
   // switch used by the visible control after the enhancement scripts load.
   var language = document.querySelector('.language');
   if (!language) return;
+  var languageHref = language.getAttribute('href');
+  language.removeAttribute('href');
   document.documentElement.lang = 'ru';
   language.click();
+  if (languageHref) language.setAttribute('href', languageHref);
   document.documentElement.lang = 'en';
   language.textContent = 'RU';
   language.setAttribute('aria-label', 'Switch to Russian');

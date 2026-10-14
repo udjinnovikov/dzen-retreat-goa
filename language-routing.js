@@ -1,11 +1,13 @@
 (function(){
   var routes={
+    '/':'/en/',
     '/goa-flow-travel/':'/en/goa-flow-travel/',
     '/guide/':'/en/guide/',
     '/team/':'/en/team/',
     '/excursions/':'/en/excursions/',
     '/faq/':'/en/faq/',
-    '/practices/':'/en/practices/'
+    '/practices/':'/en/practices/',
+    '/hampi/':'/en/hampi/'
   };
   var reverse={};
   Object.keys(routes).forEach(function(ru){reverse[routes[ru]]=ru;});
@@ -13,6 +15,7 @@
     var en=document.documentElement.lang==='en';
     document.querySelectorAll('a[href]').forEach(function(link){
       var href=link.getAttribute('href');
+      if(link.matches('.language'))return;
       if(!href||href.charAt(0)==='#'||/^(?:https?:|mailto:|tel:)/i.test(href))return;
       if(link.hasAttribute('data-goa-travel')){
         link.setAttribute('href',en?'/en/goa-flow-travel/':'/goa-flow-travel/');
@@ -24,7 +27,5 @@
   }
   document.addEventListener('DOMContentLoaded',function(){
     syncLinks();
-    var language=document.querySelector('.language');
-    if(language)language.addEventListener('click',function(){setTimeout(syncLinks,0);});
   });
 })();
