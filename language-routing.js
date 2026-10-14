@@ -27,5 +27,13 @@
   }
   document.addEventListener('DOMContentLoaded',function(){
     syncLinks();
+    var language=document.querySelector('.language');
+    if(language)language.addEventListener('click',function(){
+      var destination=language.getAttribute('href')||'';
+      try{window.localStorage.setItem('dzen_language',destination.indexOf('/en/')===0?'en':'ru');}catch(error){}
+    });
+    if(document.documentElement.lang==='en'){
+      try{window.localStorage.setItem('dzen_language','en');}catch(error){}
+    }
   });
 })();

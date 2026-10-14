@@ -4,7 +4,7 @@
     <loc>https://dzenretreat.com/</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://dzenretreat.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://dzenretreat.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://dzenretreat.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dzenretreat.com/en/"/>
   </url>
   <url><loc>https://dzenretreat.com/en/</loc></url>
   <url><loc>https://dzenretreat.com/en/guide/</loc></url>
