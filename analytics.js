@@ -64,8 +64,8 @@
 
     if (/wa\.me|api\.whatsapp\.com/i.test(href)) {
       var section = link.dataset.cta || (link.closest('section') && link.closest('section').id) || 'site';
-      event('generate_lead', { lead_channel: 'whatsapp', link_text: label, cta_location: section });
-      if (window.fbq) window.fbq('track', 'Lead', { content_name: section });
+      event('click_whatsapp', { contact_channel: 'whatsapp', link_text: label, cta_location: section });
+      if (window.fbq) window.fbq('track', 'Contact', { content_name: section });
       if (link.closest('.date-list')) event('select_retreat_date', { date_label: label });
     } else if (/t\.me\//i.test(href)) {
       event('join_community', { community: 'telegram', link_text: label });
@@ -92,4 +92,28 @@
       }
     }, { threshold: 0.25 }).observe(priceBlock);
   }
+
+  document.addEventListener('dzen:lead-submit', function (eventObject) {
+    var detail = eventObject.detail || {};
+    event('generate_lead', {
+      lead_channel: detail.channel || 'quick_enquiry',
+      cta_location: detail.location || 'enquiry_form',
+      retreat_date: detail.retreatDate || 'not_selected'
+    });
+    if (window.fbq) window.fbq('track', 'Lead', { content_name: detail.location || 'enquiry_form' });
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var path = window.location.pathname;
+    if (!/^\/en\/guide\/.+/.test(path) || /yoga-retreat-goa/.test(path) || document.querySelector('.retreat-discovery-cta')) return;
+    var host = document.querySelector('main article, main .article, main');
+    if (!host) return;
+    var panel = document.createElement('aside');
+    panel.className = 'retreat-discovery-cta';
+    panel.innerHTML = '<p>PLANNING A WELLNESS TRIP?</p><h2>Discover our 12-day yoga retreat in Goa.</h2><span>Accommodation, vegetarian meals, practices, two excursions and ocean time in Ashwem.</span><a href="/en/guide/yoga-retreat-goa/">Explore the retreat →</a>';
+    host.appendChild(panel);
+    var style = document.createElement('style');
+    style.textContent = '.retreat-discovery-cta{margin:4rem 0 0;padding:2.4rem;background:#f4e5dc;border:1px solid #dbc9bc}.retreat-discovery-cta p{margin:0 0 .7rem!important;font-size:.72rem!important;letter-spacing:.14em;color:#8b6e5c!important}.retreat-discovery-cta h2{margin:.2rem 0 1rem!important;font-size:clamp(1.8rem,4vw,3rem)!important}.retreat-discovery-cta span{display:block;max-width:650px;color:#665b54;line-height:1.6}.retreat-discovery-cta a{display:inline-block;margin-top:1.4rem;padding:.9rem 1.15rem;background:#df9871;color:#251f1b;text-decoration:none;font-weight:700}';
+    document.head.appendChild(style);
+  });
 }());
