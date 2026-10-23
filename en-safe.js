@@ -3,9 +3,9 @@
 
   if (document.documentElement.lang !== 'en' && !window.location.pathname.startsWith('/en/')) return;
 
-  const videoParts = {
-    review: ['/assets/review-01-chunks/part-00', '/assets/review-01-chunks/part-01', '/assets/review-01-chunks/part-02', '/assets/review-01-chunks/part-03', '/assets/review-01-chunks/part-04'],
-    team: ['/assets/team-video-web-chunks/part-00', '/assets/team-video-web-chunks/part-01', '/assets/team-video-web-chunks/part-02', '/assets/team-video-web-chunks/part-03']
+  const videoSources = {
+    review: '/assets/review-01.mp4',
+    team: '/assets/team-video.mp4'
   };
 
   const replaceText = (node, value) => {
@@ -65,20 +65,12 @@
     links.slice(items.length).forEach((link) => link.remove());
   };
 
-  const loadChunkedVideo = async (video, parts, label) => {
+  const prepareVideo = (video, source, label) => {
     if (!video || video.dataset.enSafeVideo === 'loading' || video.dataset.enSafeVideo === 'ready') return;
-    video.dataset.enSafeVideo = 'loading';
-    try {
-      const responses = await Promise.all(parts.map((url) => fetch(url)));
-      if (responses.some((response) => !response.ok)) throw new Error('video part unavailable');
-      const buffers = await Promise.all(responses.map((response) => response.arrayBuffer()));
-      video.src = URL.createObjectURL(new Blob(buffers, { type: 'video/mp4' }));
-      video.setAttribute('aria-label', label);
-      video.load();
-      video.dataset.enSafeVideo = 'ready';
-    } catch (error) {
-      video.dataset.enSafeVideo = 'error';
-    }
+    video.src = source;
+    video.preload = 'metadata';
+    video.setAttribute('aria-label', label);
+    video.dataset.enSafeVideo = 'ready';
   };
 
   const translateDynamicLabels = () => {
@@ -131,8 +123,8 @@
   };
 
   const repairVideos = () => {
-    document.querySelectorAll('.review-video-card video, .video-review video').forEach((video) => loadChunkedVideo(video, videoParts.review, 'Goa Flow guest video'));
-    document.querySelectorAll('.team-showcase-video video, .team-film video').forEach((video) => loadChunkedVideo(video, videoParts.team, 'Meet the Dzen Retreat team'));
+    document.querySelectorAll('.review-video-card video, .video-review video').forEach((video) => prepareVideo(video, videoSources.review, 'Goa Flow guest video'));
+    document.querySelectorAll('.team-showcase-video video, .team-film video').forEach((video) => prepareVideo(video, videoSources.team, 'Meet the Dzen Retreat team'));
   };
 
   const run = () => { translateDynamicLabels(); repairVideos(); };
