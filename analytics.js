@@ -53,7 +53,7 @@
   window.dzenTrack = event;
 
   if (document.querySelector('.hero-sales-note')) {
-    event('view_price', { price_from: 650, next_retreat: '14–25 October', price_location: 'hero' });
+    event('view_price', { price_from: 650, next_retreat: window.dzenNextRetreat || 'See current dates', price_location: 'hero' });
   }
 
   document.addEventListener('click', function (eventObject) {
